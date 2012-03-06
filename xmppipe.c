@@ -1,12 +1,12 @@
-/* xmppipe
-** transmit raw data though an xmpp tunnel
-**
-** Copyright (C) 2011 Christophe-Marie Duquesne
-**
-** This software is provided AS-IS with no warranty, either express
-** or implied.
-**
-*/
+/*
+ * xmppipe
+ * transmit raw data though an xmpp tunnel
+ *
+ * Copyright (C) 2011 Christophe-Marie Duquesne
+ *
+ * This software is provided AS-IS with no warranty, either express
+ * or implied.
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -29,6 +29,7 @@
 #define DEFAULT_TIMEOUT 1
 #endif
 
+/* user must free the result */
 char *to_base64(const unsigned char *input, int length)
 {
     BIO *bmem, *b64;
@@ -50,6 +51,7 @@ char *to_base64(const unsigned char *input, int length)
     return buff;
 }
 
+/* user must free the result */
 char *from_base64(unsigned char *input, int length)
 {
     BIO *b64, *bmem;
@@ -69,7 +71,7 @@ char *from_base64(unsigned char *input, int length)
     return buffer;
 }
 
-
+/* exits the program printing an error */
 void
 eprintf(const char *fmt, ...) {
     va_list ap;
